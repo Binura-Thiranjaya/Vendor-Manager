@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import Vendor from '../../component/vendor/register/index';
+import Vendor from '../../component/vendor/viewVendors/index';
 import Dashboard from '../../component/dashboard/index';
-
 export default class index extends Component {
   render() {
     return (
-      <div>
+        <div>
         <div className="">
           <Dashboard/>
         </div>

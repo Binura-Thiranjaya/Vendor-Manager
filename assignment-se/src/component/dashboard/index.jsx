@@ -50,10 +50,14 @@ export default function App() {
             </MDBNavbarItem>
 
             <MDBNavbarItem>
-              <MDBNavbarLink href='/vendor'>Vendor Manager</MDBNavbarLink>
+              <MDBNavbarLink href='/vendor'>Add Vendor</MDBNavbarLink>
             </MDBNavbarItem>
+
+            <MDBNavbarItem>
+              <MDBNavbarLink href='/vendor/view-all'>View Vendor</MDBNavbarLink>
+            </MDBNavbarItem>
+
            </MDBNavbarNav>
-           
         </MDBCollapse>
       </MDBContainer>
     </MDBNavbar>

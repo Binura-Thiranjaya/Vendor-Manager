@@ -42,11 +42,13 @@ app.delete('/api/delete/:id', (req, res) => {
 });
 //Update a vendor
 app.put('/api/update/:id', (req, res) => {
-    const id = req.params;
-    const { name, address, number, email, products} = req.body;
+    const id = req.params.id;
+    const {name, address, number, email, products} = req.body;
     const sqlUpdate = "UPDATE vendor SET name = ?, address = ?, number = ?, email = ?, products = ? WHERE id = ?";
     db.query(sqlUpdate, [name, address, number, email, products, id], (err, result) => {
-        if (err) console.log(err);
+        if (err) {console.log(err);
+    }
+    res.send(result);
     });
 });
 app.get('/api/get/:id', (req, res) => {

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 export default function App() {
   const [first, setFirst] = useState('');
   const [data, setData] = useState([]);
+
   const loadData=async()=>{
     const result=await axios.get('http://localhost:8080/api/get');
     setData(result.data);
@@ -19,13 +20,14 @@ export default function App() {
      document.getElementById("number").value = " ";
      document.getElementById("email").value = " ";
      document.getElementById("products").value = " ";
-    loadData();
+     alert('Vendor deleted successfully');
+     window.location.reload(true);
+     loadData();
   }
   return (
     <MDBContainer>
-    <h1 className="signIn-subTopic"> All Vendors</h1>
     <div>
-      <div className="input-group">
+      <div className="input-group mb-4">
         <input type="search" className="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" onChange={(e)=> setFirst(e.target.value)} />
       </div>
     <MDBTable bordered>

@@ -11,6 +11,8 @@ export default class index extends Component {
         <Dashboard/>
         <h1 className="signIn-Heading">Manage Users</h1>
         <Reg/>
+        <h1 className="signIn-subTopic m-5"> All Vendors</h1>
+
         <ViewProduct/>
       </div>
     )
