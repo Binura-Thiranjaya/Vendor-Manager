@@ -1,55 +1,61 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom';
 import ViewProduct from '../product/view-product/index'; 
 import Vendor from '../../page/vendor/index'; 
 import Product from '../../page/product/index'; 
 
-
-
-
 import {
+  MDBContainer,
+  MDBNavbar,
+  MDBNavbarBrand,
+  MDBNavbarToggler,
   MDBIcon,
-  MDBTabs,
-  MDBTabsItem,
-  MDBTabsLink,
-  MDBTabsContent,
-  MDBTabsPane,
-  MDBContainer
+  MDBNavbarNav,
+  MDBNavbarItem,
+  MDBNavbarLink,
+  MDBBtn,
+  MDBDropdown,
+  MDBDropdownToggle,
+  MDBDropdownMenu,
+  MDBDropdownItem,
+  MDBCollapse,
 } from 'mdb-react-ui-kit';
 
-
 export default function App() {
-  const [iconsActive, setIconsActive] = useState('tab1');
+  const [showBasic, setShowBasic] = useState(false);
 
-  const handleIconsClick = (value: string) => {
-    if (value === iconsActive) {
-      return;
-    }
-    setIconsActive(value);
-  };
   return (
-    <MDBContainer>
-      <MDBTabs className='mb-3'>
-        <MDBTabsItem>
-          <MDBTabsLink onClick={() => handleIconsClick('tab1')} active={iconsActive === 'tab1'}>
-            <MDBIcon fas icon='chart-pie' className='me-2' /> View Products
-          </MDBTabsLink>
-        </MDBTabsItem>
-        <MDBTabsItem>
-          <MDBTabsLink onClick={() => handleIconsClick('tab2')} active={iconsActive === 'tab2'}>
-            <MDBIcon fas icon='chart-pie' className='me-2' /> Manage Products
-          </MDBTabsLink>
-        </MDBTabsItem>
-        <MDBTabsItem>
-          <MDBTabsLink onClick={() => handleIconsClick('tab3')} active={iconsActive === 'tab3'}>
-            <MDBIcon fas icon='chart-pie' className='me-2' /> Manage Users
-          </MDBTabsLink>
-        </MDBTabsItem>
-      </MDBTabs>
-      <MDBTabsContent>
-        <MDBTabsPane show={iconsActive === 'tab1'}><ViewProduct/></MDBTabsPane>
-        <MDBTabsPane show={iconsActive === 'tab2'}><Product/></MDBTabsPane>
-        <MDBTabsPane show={iconsActive === 'tab3'}><Vendor/></MDBTabsPane>
-      </MDBTabsContent>
-    </MDBContainer>
+    <MDBNavbar expand='lg' light bgColor='light'>
+      <MDBContainer fluid>
+
+        <MDBNavbarToggler
+          aria-controls='navbarSupportedContent'
+          aria-expanded='false'
+          aria-label='Toggle navigation'
+          onClick={() => setShowBasic(!showBasic)}
+        >
+          <MDBIcon icon='bars' fas />
+        </MDBNavbarToggler>
+
+        <MDBCollapse navbar show={showBasic}>
+          <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
+            <MDBNavbarItem>
+              <MDBNavbarLink active aria-current='page' href='/dashboard'>
+                Home
+              </MDBNavbarLink>
+            </MDBNavbarItem>
+
+            <MDBNavbarItem>
+              <MDBNavbarLink href='/product'>Product Manager</MDBNavbarLink>
+            </MDBNavbarItem>
+
+            <MDBNavbarItem>
+              <MDBNavbarLink href='/vendor'>Vendor Manager</MDBNavbarLink>
+            </MDBNavbarItem>
+           </MDBNavbarNav>
+           
+        </MDBCollapse>
+      </MDBContainer>
+    </MDBNavbar>
   );
 }

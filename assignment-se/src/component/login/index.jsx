@@ -1,40 +1,30 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './style.css';
+import {Link} from 'react-router-dom';
+
 import {
   MDBInput,
-  MDBCol,
-  MDBRow,
-  MDBCheckbox,
   MDBBtn,
   MDBContainer,
 } from 'mdb-react-ui-kit';
-
 export default function App() {
+  const [email,setEmail] = useState('');
+  const [password,setPassword] = useState('');
+  
   return (
     <MDBContainer>
       <h1 className="signIn-Heading">Sign In</h1>
-    <form>
-      <MDBInput className='mb-4 signIn-Text-Small' type='email' id='form2Example1' label='Email address' />
-      <MDBInput className='mb-4 signIn-Text-Small' type='password' id='form2Example2' label='Password' />
-
-      <MDBRow className='mb-4'>
-        <MDBCol className='d-flex justify-content-center'>
-          <MDBCheckbox id='form2Example3' label='Remember me' defaultChecked />
-        </MDBCol>
-        <MDBCol>
-          <a href='#!'>Forgot password?</a>
-        </MDBCol>
-      </MDBRow>
-      <MDBBtn type='submit' className='mb-4' block>
-        Sign in
-      </MDBBtn>
+    <MDBInput className='mb-4 signIn-Text-Small' type='text' id='email' label='Email address' onChange={(e)=>{setEmail(e.target.value)}} />
+      <MDBInput className='mb-4 signIn-Text-Small' type='password' id='password' label='Password' onChange={(e)=>{setPassword(e.target.value)}} />
+      <Link to="/dashboard">
+        <button>Sign In</button>
+      </Link>
 
       <div className='text-center'>
         <p>
           Not a member? <a href='#!'>Register</a>
         </p>
       </div>
-    </form>
     </MDBContainer>
   );
 }
