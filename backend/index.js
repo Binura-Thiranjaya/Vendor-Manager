@@ -3,14 +3,18 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors =require('cors');
 const mysql = require('mysql2');
+const dotenv = require('dotenv');
+require("dotenv").config();
 
-const db = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'vendor_manager',
-});
 
+const config ={
+    host: process.env.DB_HOST,
+    user: process.env.DB_PORT,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+};
+const db = mysql.createPool(config);
+console.log("Hi",process.env.DB_NAME);
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));

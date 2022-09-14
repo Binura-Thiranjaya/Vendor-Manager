@@ -17,7 +17,7 @@ export default function App() {
     <MDBInput className='mb-4 signIn-Text-Small' type='text' id='email' label='Email address' onChange={(e)=>{setEmail(e.target.value)}} />
       <MDBInput className='mb-4 signIn-Text-Small' type='password' id='password' label='Password' onChange={(e)=>{setPassword(e.target.value)}} />
       <Link to="/dashboard">
-        <button>Sign In</button>
+        <button className="btn btn-block">Sign In</button>
       </Link>
 
       <div className='text-center'>
