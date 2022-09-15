@@ -1,25 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { MDBTable, MDBTableHead, MDBTableBody,MDBContainer, MDBBtn} from 'mdb-react-ui-kit';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 export default function App() {
   const [first, setFirst] = useState('');
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
   const loadData=async()=>{
-    const result=await axios.get('http://localhost:8080/api/get');
+    const result=await axios.get('http://localhost:8080/vendor/');
     setData(result.data);
   }
   useEffect(() => {
     loadData();
   }, []);
   const  deleteData = async(id)=>{
-     await axios.delete(`http://localhost:8080/api/delete/${id}`);
-     document.getElementById("name").value = " ";
-     document.getElementById("address").value = " ";
-     document.getElementById("number").value = " ";
-     document.getElementById("email").value = " ";
-     document.getElementById("products").value = " ";
+     await axios.delete(`http://localhost:8080/vendor/delete/${id}`);
      alert('Vendor deleted successfully');
      window.location.reload(true);
      loadData();

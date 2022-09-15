@@ -23,9 +23,9 @@ export default function App() {
   useEffect(() => {
     const getVendor= async() =>{
       if (id) {
-        axios.get(`http://localhost:8080/api/get/${id}`).then((res)=>{
+        axios.get(`http://localhost:8080/vendor/${id}`).then((res)=>{
           setVendor({...res.data});
-          const vendor=res. data;
+          const vendor=res.data;
           setName(vendor[0].name);
           setAddress(vendor[0].address);
           setNumber(vendor[0].number);
@@ -50,26 +50,22 @@ export default function App() {
       return;
     }else{
       if (!id) {
-      axios.post('http://localhost:8080/api/insert',data).then(()=>{
-      alert('Vendor added successfully');
+      axios.post('http://localhost:8080/vendor/add/',data).then(()=>{
+      alert('Vendor added successfully', name);
+      console.log("FE",name);
       setName('');
       setAddress('');
       setNumber('');
       setEmail('');
       setProducts('');
-      navigate('/vendor');
-      window.location.reload(true);
+      //navigate('/vendor');
+      //window.location.reload(true);
       }).catch((err)=>{
         console.log(err);
       });
   }else{
-    axios.put(`http://localhost:8080/api/update/${id}`,data).then(()=>{
+    axios.put(`http://localhost:8080/vendor/update/${id}`,data).then(()=>{
     alert('Vendor updated successfully');
-    setName('');
-    setAddress('');
-    setNumber('');
-    setEmail('');
-    setProducts('');
     navigate('/vendor');
     window.location.reload(true);
     }
@@ -79,7 +75,6 @@ export default function App() {
     }
   }
   }
-
   return (
     <MDBContainer>
       <form onSubmit={handleSubmit}>
