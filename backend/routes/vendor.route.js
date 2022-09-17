@@ -9,10 +9,10 @@ import {
 
 const vendorRouter = express.Router()
 
-vendorRouter.post('/', saveVendorController);
+vendorRouter.post('/add', saveVendorController);
 vendorRouter.get('/', getVendorsController);
 vendorRouter.get('/:id', getVendorByIdController);
-vendorRouter.delete('/:id', deleteVendorController);
-vendorRouter.put('/:id', updateVendorController);
+vendorRouter.delete('/delete/:id', deleteVendorController);
+vendorRouter.put('/update/:id', updateVendorController);
 
 export default vendorRouter;

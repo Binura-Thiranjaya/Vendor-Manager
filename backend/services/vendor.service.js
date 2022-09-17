@@ -26,7 +26,6 @@ export const saveVendorService = async (data) => {
 export const getVendorService = async () => {
     try {
         const vendor = await getVendors();
-        console.log("Hi",vendor);
         return Promise.resolve(vendor);
 
     }catch(err){

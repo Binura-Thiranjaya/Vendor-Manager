@@ -23,11 +23,11 @@ export const getVendors = async () => {
         throw new AppError("Internal Failure", 500);
     });
 }
-
-export const updateVendor = async (vendor) => {
+export const updateVendor = async (id,vendor) => {
     const sqlUpdate = "UPDATE vendor SET name = ?, address = ?, number = ?, email = ?, products = ? WHERE id = ?";
-    const res = await db.query(sqlUpdate, [vendor.name, vendor.address, vendor.number, vendor.email, vendor.products, vendor.id])
-    return Promise.resolve(res).catch((err) => {
+    const { name, address, number, email, products } = vendor;
+    const result = await db.query(sqlUpdate, [name, address, number, email, products, id]);
+    return Promise.resolve(result).catch((err) => {
         throw new AppError("Internal Failure", 500);
     });
 }

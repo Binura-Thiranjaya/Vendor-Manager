@@ -21,6 +21,9 @@ router.route('/:id').get((req, res) => {
     const sqlSelect = "SELECT * FROM vendor WHERE id = ?";
     db.query(sqlSelect, req.params.id, (err, result) => {
         res.send(result);
+        if(err){
+            
+        }
     });
 });
 
