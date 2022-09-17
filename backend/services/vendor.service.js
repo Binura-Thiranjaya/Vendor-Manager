@@ -6,7 +6,6 @@ import {
     deleteVendor,
 } from '../repository/index.js';
 import AppError from '../utils/appError.js';
-
 export const saveVendorService = async (data) => {
     const { name, address, number, email, products } = data;
     try {
@@ -22,7 +21,6 @@ export const saveVendorService = async (data) => {
         return new AppError(err.message,err.status);
     }
 };
-
 export const getVendorService = async () => {
     try {
         const vendor = await getVendors();
@@ -57,7 +55,6 @@ export const updateVendorService = async (id, data) => {
         return new AppError(err.message,err.status);
     }
 }
-
 export const deleteVendorService = async (id) => {
     try {
         const vendor = await deleteVendor(id);
