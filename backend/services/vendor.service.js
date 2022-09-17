@@ -26,7 +26,9 @@ export const saveVendorService = async (data) => {
 export const getVendorService = async () => {
     try {
         const vendor = await getVendors();
+        console.log("Hi",vendor);
         return Promise.resolve(vendor);
+
     }catch(err){
         return new AppError(err.message,err.status);
     }
@@ -65,3 +67,4 @@ export const deleteVendorService = async (id) => {
         return new AppError(err.message,err.status);
     }
 }
+

@@ -6,6 +6,9 @@ import {
     deleteVendorService
 } from '../services/index.js';
 import Success from '../utils/success.js';
+//import db from '../utils/dbConnect.js';
+
+// const db = connect();
 
 export const saveVendorController = async (req,res)=>{
     try {
@@ -18,9 +21,19 @@ export const saveVendorController = async (req,res)=>{
 };
 
 export const getVendorsController = async (req,res)=>{
+    // const sqlSelect = "SELECT * FROM vendor";
+    // await db.query(sqlSelect).then((result) => {
+    //     //res.status(200).json(result);
+    //     res.json(Success(result,"Vendors retrieved successfully"));
+
+    // }).catch((err) => {
+    //     throw new AppError("Internal Failure", 500);
+    // });
     try {
-        const vendor = await getVendorService();
-        res.json(Success(vendor,"Vendors fetched successfully"));
+        const vendors = await getVendorService();
+        //res.json(Success(vendors,"Vendors retrieved successfully"));
+        res.json(vendors)
+        console.log("Vendor",vendors)
 
     } catch (err) {
         res.status(500).json(err);
